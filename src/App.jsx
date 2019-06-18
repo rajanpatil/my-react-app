@@ -7,23 +7,7 @@ import './App.css';
 class App extends React.Component {
 
   state = {
-     todos: [
-      // {
-      //   id:v4(),
-      //   title: "Grocery shopping.",
-      //   completed: false
-      // },
-      // {
-      //   id:v4(),
-      //   title: "Hangout with friends.",
-      //   completed: false
-      // },
-      // {
-      //   id:v4(),
-      //   title: "Go for tennis session.",
-      //   completed: false
-      // }
-    ]
+     todos: []
   }
 
   markCompleted = (id) =>{
@@ -45,13 +29,21 @@ class App extends React.Component {
     })
   }
 
+  deleteTodo = (id) =>{
+    this.setState(
+      {
+        todos: this.state.todos.filter(todo => todo.id !== id)
+      }
+    )
+  }
+
   render(){
     return (
       <div className="basic-style align-center">
         <h2>Create your ToDo list</h2>
         <AddTodo add={this.addTodo}/>
         <div className="align-center">
-        <Todos todos={this.state.todos} markCompleted={this.markCompleted}/>
+        <Todos todos={this.state.todos} markCompleted={this.markCompleted} deleteTodo={this.deleteTodo}/>
         </div>
       </div>
     );
