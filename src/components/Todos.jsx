@@ -12,7 +12,7 @@ class Todos extends React.Component{
     
     render(){
         return(this.props.todos.map(todo=>
-            <TodoItem key={todo.id} todo={todo} markCompleted={this.props.markCompleted} deleteTodo={this.props.deleteTodo}/>
+            <TodoItem key={todo.id} todo={todo} markCompleted={this.props.markCompleted} editTodo={this.props.editTodo} deleteTodo={this.props.deleteTodo}/>
         ));
     }
 }

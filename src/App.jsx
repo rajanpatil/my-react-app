@@ -37,13 +37,29 @@ class App extends React.Component {
     )
   }
 
+  editTodo = (id, editTodoValue) => {
+    this.setState(
+      {
+        todos: this.state.todos.map(
+          todo => {
+            if(todo.id === id){
+              console.log(editTodoValue)
+              todo.title = editTodoValue
+            }
+            return todo
+          }
+        )
+      }
+    )
+  }
+
   render(){
     return (
       <div className="basic-style align-center">
         <h2>Create your ToDo list</h2>
         <AddTodo add={this.addTodo}/>
         <div className="align-center">
-        <Todos todos={this.state.todos} markCompleted={this.markCompleted} deleteTodo={this.deleteTodo}/>
+        <Todos todos={this.state.todos} markCompleted={this.markCompleted} editTodo={this.editTodo} deleteTodo={this.deleteTodo}/>
         </div>
       </div>
     );
