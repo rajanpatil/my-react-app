@@ -23,7 +23,7 @@ class App extends React.Component {
     });
   }
 
-  addTodo = (todoText) => {
+  createTodo = (todoText) => {
     this.setState( state => {
       return {todos: [...state.todos, {id:v4(),title: todoText,completed: false}]}
     })
@@ -57,7 +57,7 @@ class App extends React.Component {
     return (
       <div className="basic-style align-center">
         <h2>Create your ToDo list</h2>
-        <AddTodo add={this.addTodo}/>
+        <AddTodo createTodo={this.createTodo}/>
         <div className="align-center">
         <Todos todos={this.state.todos} markCompleted={this.markCompleted} editTodo={this.editTodo} deleteTodo={this.deleteTodo}/>
         </div>

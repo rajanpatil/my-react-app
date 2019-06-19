@@ -15,10 +15,6 @@ class TodoItem extends React.Component {
         editTodo: PropTypes.func.isRequired
     }
 
-    getStyle = () => {
-        return  this.props.todo.completed ? "basic-style text-decoration-line-through": "basic-style text-decoration-none"
-    }
-
     markCompleted = ()=>{
         this.props.markCompleted(this.props.todo.id)
     }
@@ -40,7 +36,7 @@ class TodoItem extends React.Component {
         }
     }
 
-    setEditedTodoText = (evt) => {
+    captureEditedTodoText = (evt) => {
         this.setState (
             {
                 editTodoText: evt.target.value
@@ -48,15 +44,25 @@ class TodoItem extends React.Component {
         )
     }
 
+    getTodoTextStyle = ()=>{
+        return this.state.editEnabled ? "hide" : this.getTodoTextStyleForCompleted()
+    }
+
+    getTodoTextStyleForCompleted = () => {
+        return  this.props.todo.completed ? "basic-style text-decoration-line-through": "basic-style text-decoration-none"
+    }
+
     render(){
         let todoValue = this.props.todo.title
+        const title = this.props.todo.title
+        const editEnabled = this.state.editEnabled
         return(
-            <div className={this.getStyle()}>
-                <input className="basic-padding-and-margin" type={this.state.editEnabled? "hidden" : "checkbox"} onChange={this.markCompleted} />
-                <span className={this.state.editEnabled ? "hide": "show basic-padding-and-margin"}>{this.props.todo.title}</span>
-                <input className="basic-padding-and-margin input-box" type={this.state.editEnabled? "text": "hidden"} defaultValue={todoValue} onChange={this.setEditedTodoText}/>
-                <button className="basic-padding-and-margin button" type="button" onClick={this.editTodo}>{this.state.editEnabled ? "Save" : "Edit"}</button>
-                <button className="basic-padding-and-margin delete-button" type="button" onClick={this.deleteTodo} disabled={this.state.editEnabled}>Delete</button>
+            <div>
+                <input className="basic-padding-and-margin" type={editEnabled? "hidden" : "checkbox"} onChange={this.markCompleted} />
+                <span className={this.getTodoTextStyle()}>{title}</span>
+                <input className="basic-padding-and-margin input-box" type={editEnabled? "text": "hidden"} defaultValue={todoValue} onChange={this.captureEditedTodoText}/>
+                <button className="basic-padding-and-margin button" type="button" onClick={this.editTodo}>{editEnabled ? "Save" : "Edit"}</button>
+                <button className="basic-padding-and-margin delete-button" type="button" onClick={this.deleteTodo} disabled={editEnabled}>Delete</button>
             </div>
         );
     }

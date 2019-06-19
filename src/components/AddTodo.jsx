@@ -1,12 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types"
 
 class AddTodo extends React.Component {
+
+    static propTypes = {
+        createTodo: PropTypes.func
+    }
 
     state = {
         todoText: ""
     }
 
-    setTodoText = (evt) => {
+    captureTodoText = (evt) => {
         this.setState (
             {
                 todoText: evt.target.value
@@ -14,16 +19,8 @@ class AddTodo extends React.Component {
         )
     }
 
-    getStyle = () => {
-        return {
-            backgroundColor: '#e4e4e4',
-            padding: "5px",
-            borderBottom: "1px #ccc dotted"
-        }
-    }
-
     createTodo = () => {
-        this.props.add(this.state.todoText);
+        this.props.createTodo(this.state.todoText);
         this.setState( 
             { todoText: "" }
         );
@@ -32,7 +29,7 @@ class AddTodo extends React.Component {
     render(){
         return (
             <div>
-                <input id="textBox" className="basic-padding-and-margin input-box" type="text" value={this.state.todoText} onChange={this.setTodoText} />
+                <input id="textBox" className="basic-padding-and-margin input-box" type="text" value={this.state.todoText} onChange={this.captureTodoText} />
                 <button id="addButton" className="basic-padding-and-margin button" type="button" disabled={!this.state.todoText.length} onClick={this.createTodo}>
                     Add Todo
                 </button>
