@@ -52,11 +52,11 @@ class TodoItem extends React.Component {
         let todoValue = this.props.todo.title
         return(
             <div className={this.getStyle()}>
-                <input type={this.state.editEnabled? "hidden" : "checkbox"} onChange={this.markCompleted} />
-                <span className={this.state.editEnabled ? "hide": "show"}>{this.props.todo.title}</span>
-                <input type={this.state.editEnabled? "text": "hidden"} defaultValue={todoValue} onChange={this.setEditedTodoText}/>
-                <button type="button" onClick={this.editTodo}>{this.state.editEnabled ? "save" : "edit"}</button>
-                <button type="button" onClick={this.deleteTodo} disabled={this.state.editEnabled}>delete</button>
+                <input className="basic-padding-and-margin" type={this.state.editEnabled? "hidden" : "checkbox"} onChange={this.markCompleted} />
+                <span className={this.state.editEnabled ? "hide": "show basic-padding-and-margin"}>{this.props.todo.title}</span>
+                <input className="basic-padding-and-margin" type={this.state.editEnabled? "text": "hidden"} defaultValue={todoValue} onChange={this.setEditedTodoText}/>
+                <button className="basic-padding-and-margin" type="button" onClick={this.editTodo}>{this.state.editEnabled ? "Save" : "Edit"}</button>
+                <button className="basic-padding-and-margin" type="button" onClick={this.deleteTodo} disabled={this.state.editEnabled}>Delete</button>
             </div>
         );
     }

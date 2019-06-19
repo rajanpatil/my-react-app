@@ -10,7 +10,12 @@
 .basic-style {
   background-color: #f4f4f4;
   padding: 10px;
-  border-bottom: 1px #ccc dotted;
+  /* border-bottom: 1px #ccc dotted; */
+}
+
+.basic-padding-and-margin {
+  padding: 5px;
+  margin: 5px;
 }
 
 .text-decoration-none {

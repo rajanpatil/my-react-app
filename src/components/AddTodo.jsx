@@ -32,8 +32,8 @@ class AddTodo extends React.Component {
     render(){
         return (
             <div>
-                <input id="textBox" type="text" value={this.state.todoText} onChange={this.setTodoText}/>
-                <button id="addButton" type="button" disabled={!this.state.todoText.length} onClick={this.createTodo}>
+                <input id="textBox" className="basic-padding-and-margin" type="text" value={this.state.todoText} onChange={this.setTodoText} />
+                <button id="addButton" className="basic-padding-and-margin" type="button" disabled={!this.state.todoText.length} onClick={this.createTodo}>
                     Add Todo
                 </button>
             </div>
