@@ -54,9 +54,9 @@ class TodoItem extends React.Component {
             <div className={this.getStyle()}>
                 <input className="basic-padding-and-margin" type={this.state.editEnabled? "hidden" : "checkbox"} onChange={this.markCompleted} />
                 <span className={this.state.editEnabled ? "hide": "show basic-padding-and-margin"}>{this.props.todo.title}</span>
-                <input className="basic-padding-and-margin" type={this.state.editEnabled? "text": "hidden"} defaultValue={todoValue} onChange={this.setEditedTodoText}/>
-                <button className="basic-padding-and-margin" type="button" onClick={this.editTodo}>{this.state.editEnabled ? "Save" : "Edit"}</button>
-                <button className="basic-padding-and-margin" type="button" onClick={this.deleteTodo} disabled={this.state.editEnabled}>Delete</button>
+                <input className="basic-padding-and-margin input-box" type={this.state.editEnabled? "text": "hidden"} defaultValue={todoValue} onChange={this.setEditedTodoText}/>
+                <button className="basic-padding-and-margin button" type="button" onClick={this.editTodo}>{this.state.editEnabled ? "Save" : "Edit"}</button>
+                <button className="basic-padding-and-margin delete-button" type="button" onClick={this.deleteTodo} disabled={this.state.editEnabled}>Delete</button>
             </div>
         );
     }

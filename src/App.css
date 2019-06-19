@@ -10,7 +10,6 @@
 .basic-style {
   background-color: #f4f4f4;
   padding: 10px;
-  /* border-bottom: 1px #ccc dotted; */
 }
 
 .basic-padding-and-margin {
@@ -27,9 +26,25 @@
 }
 
 .hide {
-  display: none
+  display: none;
 }
 
 .show {
-  display: ''
+  display: '';
+}
+
+.button {
+  background-color: green;
+  color: white;
+  border-radius: 4px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+}
+
+.input-box {
+  border-radius: 4px;
 }
